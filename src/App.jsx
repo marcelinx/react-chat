@@ -1,16 +1,17 @@
 import { auth, databaseApp } from "./services/firebaseConfig";
+import { useRef, useState } from "react";
 import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { collection, query, orderBy, limit, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-import "./App.css";
+import "./global.css";
 
 export const App = () => {
   const [user] = useAuthState(auth);
   return (
     <div className='App'>
       <header>
-         <h1>ReactChat⚛️</h1>
+         <h1>ReactChat ⚛️ </h1>
         <SignOut />
       </header>
       <section>{user ? <ChatRoom /> : <SignIn />}</section>
